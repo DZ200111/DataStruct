@@ -17,16 +17,16 @@ struct BinarySearchTree
 {
     BSTNode *root;  //根节点
     int size;  //结点个数
-
+    //钩子函数比较器，放到结构体内部
+    int (*compareFunc)(ELEMENTTYPE val1, ELEMENTTYPE val2);
 };
 typedef struct BinarySearchTree BSTree;
 
 //初始化树
-int InitBinarySearchTree(BSTree **BStree);
+int InitBinarySearchTree(BSTree **BStree,int (*compareFunc)(ELEMENTTYPE val1, ELEMENTTYPE val2));
 
 //二叉搜索树的插入
-int InsertBinarySearchTree(BSTree *BStree, ELEMENTTYPE val, int(*compareFunc)(ELEMENTTYPE, ELEMENTTYPE));
-
+int InsertBinarySearchTree(BSTree *BStree, ELEMENTTYPE val);
 //二叉搜索树是否包含指定的元素
 int IsBinarySearchTreeContainVal(BSTree *BStree, ELEMENTTYPE val);
 
