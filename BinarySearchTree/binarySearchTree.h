@@ -27,6 +27,9 @@ int InitBinarySearchTree(BSTree **BStree);
 //二叉搜索树的插入
 int InsertBinarySearchTree(BSTree *BStree, ELEMENTTYPE val, int(*compareFunc)(ELEMENTTYPE, ELEMENTTYPE));
 
+//二叉搜索树是否包含指定的元素
+int IsBinarySearchTreeContainVal(BSTree *BStree, ELEMENTTYPE val);
+
 //二叉搜索树的前序遍历
 int PreTravelBinarySearchTree();
 

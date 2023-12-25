@@ -122,14 +122,24 @@ int InsertBinarySearchTree(BSTree *BStree, ELEMENTTYPE val, int (*compareFunc)(E
     {
         parentNode->left = newNode;
     }
-    else(cmp > 0)
+    else if(cmp > 0)      
     {
         parentNode->right = newNode;
     }
-    
     BStree->size++;
 
     return ret;
+}
+
+static BSTNode * baseAppointValGetBSTNode(BSTree *BStree, ELEMENTTYPE val, int(*compareFunc)(ELEMENTTYPE, ELEMENTTYPE))
+{
+    BSTNode *travelNode = BStree->root;
+    while(travelNode != NULL)
+}
+//二叉搜索树是否包含指定的元素
+int IsBinarySearchTreeContainVal(BSTree *BStree, ELEMENTTYPE val)
+{
+
 }
 
 //二叉搜索树的前序遍历
@@ -153,5 +163,5 @@ int PosTravelBinarySearchTree()
 //二叉搜索树的层序遍历
 int LevelTravelBinarySearchTree()
 {
-    
+
 }
