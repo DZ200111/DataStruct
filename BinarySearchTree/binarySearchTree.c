@@ -36,7 +36,7 @@ static BSTNode* CreateNode(ELEMENTTYPE val, BSTNode *parentNode)
 }
 
 //初始化树
-int InitBinarySearchTree(BSTree **BStree, int (*compareFunc)(ELEMENTTYPE val1, ELEMENTTYPE val2))
+int InitBinarySearchTree(BSTree **BStree, int (*compareFunc)(ELEMENTTYPE val1, ELEMENTTYPE val2), int (*printFunc)(ELEMENTTYPE val))
 {
     int ret = 0;
     BSTree *bstree = (BSTree *)malloc(sizeof(BSTree));
@@ -49,6 +49,7 @@ int InitBinarySearchTree(BSTree **BStree, int (*compareFunc)(ELEMENTTYPE val1, E
     bstree->root = NULL;
     bstree->size = 0;
     bstree->compareFunc = compareFunc;
+    bstree->printFunc = printFunc;
 
     // bstree->root = (BSTree *)malloc(sizeof(BSTree));
     // if(bstree->root == NULL)
@@ -200,7 +201,8 @@ int LevelTravelBinarySearchTree(BSTree *BStree)
     while(!doubleLinkListQueueIsEmpty(&queue))
     {
         doubleLinkListQueueTop(&queue, (void **)&nodeVal);
-        printf("data:%d\n",nodeVal->data);
+        //printf("data:%d\n",nodeVal->data);
+        BStree->printFunc(nodeVal->data);
         doubleLinkListQueuePop(&queue);
 
         //将左子树入队

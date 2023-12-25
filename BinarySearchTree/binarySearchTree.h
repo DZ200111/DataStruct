@@ -19,11 +19,14 @@ struct BinarySearchTree
     int size;  //结点个数
     //钩子函数比较器，放到结构体内部
     int (*compareFunc)(ELEMENTTYPE val1, ELEMENTTYPE val2);
+
+    //钩子函数 包装器， 实现自定义打印函数接口
+    int (*printFunc)(ELEMENTTYPE val);
 };
 typedef struct BinarySearchTree BSTree;
 
 //初始化树
-int InitBinarySearchTree(BSTree **BStree,int (*compareFunc)(ELEMENTTYPE val1, ELEMENTTYPE val2));
+int InitBinarySearchTree(BSTree **BStree,int (*compareFunc)(ELEMENTTYPE val1, ELEMENTTYPE val2), int (*printFunc)(ELEMENTTYPE val));
 
 //二叉搜索树的插入
 int InsertBinarySearchTree(BSTree *BStree, ELEMENTTYPE val);
