@@ -43,6 +43,11 @@ int InitBinarySearchTree(BSTree **BStree)
     return ret;
 }
 
+static int compareFunc(ELEMENTTYPE val1, ELEMENTTYPE val2)
+{
+    return val1 - val2;
+
+}
 //二叉搜索树的插入
 int InsertBinarySearchTree(BSTree *BStree, ELEMENTTYPE val)
 {
@@ -66,7 +71,7 @@ int InsertBinarySearchTree(BSTree *BStree, ELEMENTTYPE val)
     {
         //标记父节点
         parentNode = travelNode;
-        cmp = val - travelNode->data;
+        cmp = compareFunc(val, travelNode->data);
         if(cmp < 0)
         {
             travelNode = travelNode->left;
@@ -81,8 +86,32 @@ int InsertBinarySearchTree(BSTree *BStree, ELEMENTTYPE val)
             return ret;
         }
     }
+
+    BSTNode *newNode = (BSTNode *)malloc(sizeof(BSTNode));
+    if(newNode == NULL)
+    {
+        return MALLOC_ERROR;
+    }
+    memset(newNode, 0, sizeof(BSTNode));
+    newNode->data = 0;
+    newNode->left = NULL;
+    newNode->right = NULL;
+    newNode->parent = NULL;
+
+    //新节点赋值
+    newNode->data = val;
+
     if(cmp < 0)
     {
-        parentNode->left = 
+        parentNode->left = newNode;
     }
+    else(cmp > 0)
+    {
+        parentNode->right = newNode;
+    }
+    newNode->parent = parentNode;
+    
+    BStree->size++;
+
+    return ret;
 }
