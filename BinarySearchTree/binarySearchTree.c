@@ -44,7 +44,45 @@ int InitBinarySearchTree(BSTree **BStree)
 }
 
 //二叉搜索树的插入
-int InsertBinarySearchTree(BSTree **BStree, ELEMENTTYPE val)
+int InsertBinarySearchTree(BSTree *BStree, ELEMENTTYPE val)
 {
+    int ret = 0;
+    //空树
+    if(BStree->size == 0)
+    {
+        //更新树的结点
+        BStree->size++;
 
+        BStree->root->data = val;
+        return ret;
+    }
+    
+    BSTNode *travelNode = BStree->root;
+    BSTNode *parentNode = BStree->root; 
+
+    int cmp = 0;
+    
+    while(travelNode != NULL)
+    {
+        //标记父节点
+        parentNode = travelNode;
+        cmp = val - travelNode->data;
+        if(cmp < 0)
+        {
+            travelNode = travelNode->left;
+        }
+        else if(cmp > 0)
+        {
+            travelNode = travelNode->right;
+        }
+        else
+        {
+            //插入元素与遍历到的元素相等
+            return ret;
+        }
+    }
+    if(cmp < 0)
+    {
+        parentNode->left = 
+    }
 }
