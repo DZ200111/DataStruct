@@ -25,6 +25,19 @@ typedef struct BinarySearchTree BSTree;
 int InitBinarySearchTree(BSTree **BStree);
 
 //二叉搜索树的插入
-int InsertBinarySearchTree(BSTree *BStree, ELEMENTTYPE val);
+int InsertBinarySearchTree(BSTree *BStree, ELEMENTTYPE val, int(*compareFunc)(ELEMENTTYPE, ELEMENTTYPE));
+
+//二叉搜索树的前序遍历
+int PreTravelBinarySearchTree();
+
+//二叉搜索树的中序遍历
+int MidTravelBinarySearchTree();
+
+//二叉搜索树的后序遍历
+int PosTravelBinarySearchTree();
+
+//二叉搜索树的层序遍历
+int LevelTravelBinarySearchTree();
+
 
 #endif
